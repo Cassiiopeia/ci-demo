@@ -13,11 +13,6 @@ jobs:
       - name: git code checkout
         uses: actions/checkout@v3
 
-      # - name: Make env file
-      #   run: |
-      #     echo "${{ secrets.ENV_PROPERTIES }}" > ".env"
-      #     cat .env
-
       - name: docker setup
         uses: docker/setup-buildx-action@v3
 
@@ -50,7 +45,7 @@ jobs:
           port: 2022
           script: |
             export PW=${{ secrets.SERVER_PASSWORD }}
-            echo PW | sudo -ES docker pull ***/demo-front:latest
-            echo PW | sudo -ES docker stop demo-front || true
-            echo PW | sudo -ES docker rm demo-front || true
-            echo PW | sudo -ES docker run -d --name demo-front -p 3000:3000 ***/demo-front:latest
+            echo $PW | sudo -S /usr/bin/docker pull ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
+            echo $PW | sudo -S /usr/bin/docker stop demo-front || true
+            echo $PW | sudo -S /usr/bin/docker rm demo-front || true
+            echo $PW | sudo -S /usr/bin/docker run -d --name demo-front -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
