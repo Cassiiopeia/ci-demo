@@ -40,7 +40,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-20.04
-    if: false
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
