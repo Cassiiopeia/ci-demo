@@ -31,3 +31,5 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Docker container running with name: react-app-container"
+
+#hello
