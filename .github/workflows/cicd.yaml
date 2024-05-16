@@ -43,6 +43,7 @@ jobs:
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
+<<<<<<< HEAD
       with:
         host: ${{ secrets.SERVER_HOST }}
         username: ${{ secrets.SERVER_USER }}
@@ -53,3 +54,16 @@ jobs:
           docker stop demo-front || true
           docker rm demo-front || true
           docker run -d --name demo-front -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
+=======
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 2022
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
+            docker stop demo-front || true
+            docker rm demo-front || true
+            docker run -d --name demo-front -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
+>>>>>>> 417df7f21b533751483b94cfbbd8e1874484b197
