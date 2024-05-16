@@ -44,8 +44,9 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 2022
           script: |
+            export PATH=$PATH:/usr/local/bin
             export PW=${{ secrets.SERVER_PASSWORD }}
-            echo $PW | sudo -S /usr/bin/docker pull ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
-            echo $PW | sudo -S /usr/bin/docker stop demo-front || true
-            echo $PW | sudo -S /usr/bin/docker rm demo-front || true
-            echo $PW | sudo -S /usr/bin/docker run -d --name demo-front -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
+            echo $PW | sudo -S docker pull ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
+            echo $PW | sudo -S docker stop demo-front || true
+            echo $PW | sudo -S docker rm demo-front || true
+            echo $PW | sudo -S docker run -d --name demo-front -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
