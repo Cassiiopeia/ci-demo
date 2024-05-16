@@ -49,7 +49,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 2022
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
-            docker stop demo-front || true
-            docker rm demo-front || true
-            docker run -d --name demo-front -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
+            sudo docker stop demo-front || true
+            sudo docker rm demo-front || true
+            sudo docker run -d --name demo-front -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/demo-front:latest
