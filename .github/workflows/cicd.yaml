@@ -49,7 +49,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 2022
           script: |
-            echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker pull ***/demo-front:latest
-            echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker stop demo-front || true
-            echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker rm demo-front || true
-            echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker run -d --name demo-front -p 3000:3000 ***/demo-front:latest
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S docker pull ***/demo-front:latest
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S docker stop demo-front || true
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S docker rm demo-front || true
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S docker run -d --name demo-front -p 3000:3000 ***/demo-front:latest
